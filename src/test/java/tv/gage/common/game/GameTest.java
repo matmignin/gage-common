@@ -49,24 +49,6 @@ public class GameTest {
 	}
 	
 	@Test
-	public void isReadyToPlayTrueTest() throws PlayerRosterFullException {
-		Game game = new TestGame(null, "SIMN");
-		for (int i = 0; i < 5; i++) {
-			game.addPlayer(Player.builder().build());
-		}
-		assertEquals(true, game.isReadyToPlay());
-	}
-
-	@Test
-	public void isReadyToPlayFalseTest() throws PlayerRosterFullException {
-		Game game = new TestGame(null, "SIMN");
-		for (int i = 0; i < 2; i++) {
-			game.addPlayer(Player.builder().build());
-		}
-		assertEquals(false, game.isReadyToPlay());
-	}
-	
-	@Test
 	public void getClassTest() {
 		Game game = new TestGame(null, "SIMN");
 		assertEquals(game.getClass().getSimpleName(), game.getClazz());

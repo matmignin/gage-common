@@ -43,10 +43,6 @@ public abstract class Game {
 		players.remove(player);
 	}
 	
-	public boolean isReadyToPlay() {
-		return players.size() >= minNumberOfPlayers;
-	}
-	
 	@JsonProperty("class")
 	public String getClazz() {
 		return clazz.getSimpleName();

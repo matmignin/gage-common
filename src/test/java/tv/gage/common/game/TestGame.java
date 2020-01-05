@@ -12,5 +12,5 @@ public class TestGame extends Game {
 
 	@Override
 	public void receivePlayerCommand(Player player, String jsonCommand) {}
-	
+
 }
