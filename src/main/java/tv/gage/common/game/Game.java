@@ -43,7 +43,7 @@ public abstract class Game {
 	}
 	
 	public boolean isReadyToPlay() {
-		return players.size() >= minNumberOfPlayers && players.size() <= maxNumberOfPlayers;
+		return players.size() >= minNumberOfPlayers;
 	}
 	
 	@JsonProperty("class")

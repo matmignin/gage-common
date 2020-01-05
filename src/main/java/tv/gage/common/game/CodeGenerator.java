@@ -6,16 +6,16 @@ import org.apache.commons.lang3.RandomStringUtils;
 
 public class CodeGenerator {
 	
-	private String generate(int size) {
-		return RandomStringUtils.randomAlphabetic(size).toUpperCase();
-	}
-	
 	public String generateUniqueGameCode(List<Game> games) {
 		String code = generate(4);
 		if (!isGameCodeUnique(code, games)) {
 			return generateUniqueGameCode(games);
 		}
 		return code;
+	}
+	
+	private String generate(int size) {
+		return RandomStringUtils.randomAlphabetic(size).toUpperCase();
 	}
 	
 	private boolean isGameCodeUnique(String code, List<Game> games) {
