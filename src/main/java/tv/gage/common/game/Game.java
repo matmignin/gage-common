@@ -8,21 +8,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import tv.gage.common.exception.PlayerRosterFullException;
 import tv.gage.common.exception.UnknownPlayerException;
-import tv.gage.common.socket.SocketService;
+import tv.gage.common.messaging.BroadcastService;
+import tv.gage.common.messaging.BroadcastServiceHelper;
 
 @Data
 public abstract class Game {
 
 	protected Class<?> clazz;
+	protected BroadcastServiceHelper broadcastServiceHelper;
+	protected String gameCode;
 	protected int minNumberOfPlayers;
 	protected int maxNumberOfPlayers;
-	protected SocketService socketService;
-	protected String gameCode;
 	protected List<Player> players = new ArrayList<Player>();
 	
-	public Game(Class<?> clazz, SocketService socketService, String gameCode, int minNumberOfPlayers, int maxNumberOfPlayers) {
+	public Game(Class<?> clazz, BroadcastService broadcastService, String gameCode, int minNumberOfPlayers, int maxNumberOfPlayers) {
 		this.clazz = clazz;
-		this.socketService = socketService;
+		this.broadcastServiceHelper = new BroadcastServiceHelper(broadcastService, gameCode);
 		this.gameCode = gameCode;
 		this.minNumberOfPlayers = minNumberOfPlayers;
 		this.maxNumberOfPlayers = maxNumberOfPlayers;

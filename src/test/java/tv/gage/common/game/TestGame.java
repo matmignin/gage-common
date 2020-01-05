@@ -1,11 +1,11 @@
 package tv.gage.common.game;
 
-import tv.gage.common.socket.SocketService;
+import tv.gage.common.messaging.BroadcastService;
 
 public class TestGame extends Game {
 
-	public TestGame(SocketService socketService, String gameCode) {
-		super(TestGame.class, socketService, gameCode, 4, 6);
+	public TestGame(BroadcastService broadcastService, String gamecode) {
+		super(TestGame.class, broadcastService, gamecode, 4, 6);
 	}
 
 	public void receiveGameCommand(String jsonCommand) {}

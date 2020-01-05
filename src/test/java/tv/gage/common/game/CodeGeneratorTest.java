@@ -9,14 +9,20 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 import tv.gage.common.exception.PlayerRosterFullException;
+import tv.gage.common.messaging.BroadcastService;
+import tv.gage.common.messaging.Message;
 
 public class CodeGeneratorTest {
-
+	
 	private List<Game> generateGames() throws PlayerRosterFullException {
 		List<Game> games = new ArrayList<Game>();
 		for (int i = 0; i < 5000; i++) {
 			String gameCode = new CodeGenerator().generateUniqueGameCode(games);
-			games.add(new TestGame(null, gameCode));
+			BroadcastService broadcastService = new BroadcastService() {
+				protected void sendPlayerMessage(Message message) {}
+				protected void sendGameMessage(Message message) {}
+			};
+			games.add(new TestGame(broadcastService, gameCode));
 		}
 		return games;
 	}

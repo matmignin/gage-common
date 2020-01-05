@@ -18,14 +18,14 @@ public class GameTest {
 	
 	@Test 
 	public void addPlayerTest() throws PlayerRosterFullException {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		game.addPlayer(Player.builder().build());
 		assertEquals(1, game.getPlayers().size());
 	}
 	
 	@Test(expected=PlayerRosterFullException.class)
 	public void addPlayerExceptionTest() throws PlayerRosterFullException {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		for (int i = 0; i < 10; i++) {
 			game.addPlayer(Player.builder().build());
 		}
@@ -33,7 +33,7 @@ public class GameTest {
 	
 	@Test
 	public void removePlayerTest() throws PlayerRosterFullException, UnknownPlayerException {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		game.addPlayer(Player.builder().playerCode("PLYR").build());
 		game.addPlayer(Player.builder().playerCode("WINR").build());
 		game.removePlayer(game.getPlayers().get(1));
@@ -42,7 +42,7 @@ public class GameTest {
 	
 	@Test(expected=UnknownPlayerException.class)
 	public void removePlayerExceptionTest() throws PlayerRosterFullException, UnknownPlayerException {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		game.addPlayer(Player.builder().playerCode("PLYR").build());
 		game.addPlayer(Player.builder().playerCode("WINR").build());
 		game.removePlayer(Player.builder().playerCode("NULL").build());
@@ -50,7 +50,7 @@ public class GameTest {
 	
 	@Test
 	public void isReadyToPlayTrueTest() throws PlayerRosterFullException {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		for (int i = 0; i < 5; i++) {
 			game.addPlayer(Player.builder().build());
 		}
@@ -59,7 +59,7 @@ public class GameTest {
 
 	@Test
 	public void isReadyToPlayFalseTest() throws PlayerRosterFullException {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		for (int i = 0; i < 2; i++) {
 			game.addPlayer(Player.builder().build());
 		}
@@ -68,13 +68,13 @@ public class GameTest {
 	
 	@Test
 	public void getClassTest() {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		assertEquals(game.getClass().getSimpleName(), game.getClazz());
 	}
 	
 	@Test
 	public void gameInfoTest() {
-		Game game = new TestGame(null, "GAME");
+		Game game = new TestGame(null, "SIMN");
 		GameInfo gameInfo = GameInfo.builder()
 				.clazz(TestGame.class)
 				.minNumberOfPlayers(4)
